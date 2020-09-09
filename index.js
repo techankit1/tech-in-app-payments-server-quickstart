@@ -30,8 +30,8 @@ const customersApi = new CustomersApi();
 
 app.post('/chargeForCookie', async (request, response) => {
   const requestBody = request.body;
-  const aomount=5000;
- const createOrderRequest = getOrderRequest(aomount);
+  const amount=5000;
+ const createOrderRequest = getOrderRequest(amount);
 
 
   try {
@@ -125,7 +125,7 @@ function getOrderRequest(oaomount) {
           name: "Cookie 🍪",
           quantity: "1",
           base_price_money: {
-            amount: aomount,
+            amount: oaomount,
             currency: "USD"
           }
         }
