@@ -30,7 +30,8 @@ const customersApi = new CustomersApi();
 
 app.post('/chargeForCookie', async (request, response) => {
   const requestBody = request.body;
- 
+ const createOrderRequest = getOrderRequest();
+
 
   try {
     const locations = await locationsApi.listLocations();
