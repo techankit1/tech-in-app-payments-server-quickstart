@@ -30,7 +30,8 @@ const customersApi = new CustomersApi();
 
 app.post('/chargeForCookie', async (request, response) => {
   const requestBody = request.body;
- const createOrderRequest = getOrderRequest();
+  var aomount=5000;
+ const createOrderRequest = getOrderRequest(aomount);
 
 
   try {
@@ -42,7 +43,7 @@ app.post('/chargeForCookie', async (request, response) => {
       "idempotency_key": crypto.randomBytes(12).toString('hex'),
       "source_id": requestBody.nonce,
       "amount_money": {
-        ...3000,
+        ...order.order.total_money,
       },
       "order_id": order.order.id,
       "autocomplete": true,
@@ -115,7 +116,7 @@ app.post('/createCustomerCard', async (request, response) => {
   }
 });
 
-function getOrderRequest() {
+function getOrderRequest(oaomount) {
   return {
     idempotency_key: crypto.randomBytes(12).toString('hex'),
     order: {
@@ -124,7 +125,7 @@ function getOrderRequest() {
           name: "Cookie 🍪",
           quantity: "1",
           base_price_money: {
-            amount: 200,
+            amount: aomount,
             currency: "USD"
           }
         }
